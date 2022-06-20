@@ -1,0 +1,50 @@
+security.ldap:
+  serverUrl: ldap://ldap.server:389/
+  managerDn: uid=root,cn=users,dc=ldap,dc=server
+  managerPassword: 6a6stttwtseg
+  baseDn: dc=ldap,dc=server
+  allowAnonymousLogin: false
+  acceptUntrustedCertificates: true
+  userDnPattern:
+  userSearchBase: cn=users
+  userSearchFilter: (objectclass=person)
+  groupSearchBase:
+  groupSearchFilter: (objectclass=apple-group)
+  userIdAttribute: cn
+  userFirstnameAttribute: gecos
+  userLastnameAttribute: lastName
+  userEmailAttribute: mail
+  userPasswordAttribute: userPassword
+  groupIdAttribute: cn
+  groupNameAttribute: description
+  groupTypeAttribute:
+  groupMemberAttribute: member
+  sortControlSupported: false
+security.administrator:
+  administratorGroupName: administrators
+  administratorUserName: admin
+spring.datasource:
+  url: jdbc:h2:./camunda-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  username: sa
+  password: sa
+spring.h2.console.enabled: true
+spring.jersey:
+  application-path: /rest
+camunda:
+  bpm:
+#    admin-user:
+#      id: demo
+#      password: demo
+#      firstName: Demo
+    authorization:
+      enabled: true
+    default-serialization-format: "application/json"
+    history-level: "FULL"
+    id-generator: "org.camunda.bpm.engine.impl.persistence.StrongUuidGenerator"
+    jdbc-batch-processing: false
+    job-execution:
+      enabled: true
+    metrics:
+      enabled: true  #must be set to true if you want to use Spring boot ACTUATOR
+server:
+  port: 8080
