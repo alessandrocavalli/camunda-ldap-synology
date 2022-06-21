@@ -27,3 +27,7 @@ The last two above instructions to comply the application.yaml file...
 ### Laptop configuration:
 
 Make sure you modify your hosts file to map your synology nas to ldap.server (ie: 192.168.1.34     ldap.server)
+
+### yaml configuration:
+
+Change security.ldap.managerPassword which needs to be the same than the one configured on your ldap server
